@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../js/pru.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#span1").html(myObject.type);
+
+//            TODO: Try to add a new span that get the contents of MY REST CONTROLLER
+            $.ajax({
+                url: "http://rest-service.guides.spring.io/greeting"
+            }).then(function(data) {
+                $('#restId').append(data.id);
+                $('#restContent').append(data.content);
+            });
+        })
+    </script>
+</head>
+<body>
+    <h1>HELLO FROM HTML!!!!</h1>
+    <span id="span1"></span>
+    <p>Id from Java REST Controller:<span id="restId"></span></p>
+    <p>Content from Java REST Controller:<span id="restContent"></span></p>
+</body>
+</html>
